@@ -1,0 +1,81 @@
+<form class="regForm" (ngSubmit)="onSubmit(); userModelForm.reset()" #userModelForm="ngForm">
+  <div>
+    <div class="lbl">
+      <label>Full Name</label>
+      <br />
+      <p class="alert" *ngIf="!txtName.valid && txtName.touched">The name is required</p>
+    </div>
+    <div class="val">
+      <input name="name" [(ngModel)]="userModel.name" #txtName="ngModel" required>
+    </div>
+  </div>
+  <div class="clear">
+  </div>
+  <div>
+    <div class="lbl">
+      <label>Email</label>
+      <br />
+      <p class="alert" *ngIf="!txtEmail.valid && txtEmail.touched">Insert a valid email</p>
+    </div>
+    <div class="val">
+      <input name="email" type="email"  [(ngModel)]="userModel.email" #txtEmail="ngModel" required email>
+    </div>
+  </div>
+  <div class="clear">
+  </div>
+  <div>
+    <div class="lbl">
+      <label>Phone number</label>
+      <br />
+      <p class="alert" *ngIf="!txtPhone.valid && txtPhone.touched">Insert a valid phone number</p>
+    </div>
+    <div class="val">
+      <input name="phone" pattern="[0-9]+" maxlength="10" [(ngModel)]="userModel.phone" #txtPhone="ngModel" required>
+    </div>
+  </div>
+  <div class="clear">
+  </div>
+  <div>
+    <div class="lbl">
+      <label>Gender</label>
+      <br />
+      <p class="alert" *ngIf="selectFormControl.touched && selectFormControl.hasError('required')">The gender is required</p>
+    </div>
+    <div class="val">
+        <mat-form-field>
+            <select matNativeControl required [formControl]="selectFormControl" [(ngModel)]="userModel.gender">
+              <option label="-- מי אני? --"></option>
+              <option value="0">איש</option>
+              <option value="1">אשה</option>
+            </select>
+            
+          </mat-form-field>
+    </div>
+  </div>
+  <div class="clear">
+  </div>
+  <div>
+    <div class="lbl">
+      <label>Birth Date</label>
+      <br />
+      <p class="alert" *ngIf="!txtDate.valid && txtDate.touched">The birth date is required</p>
+    </div>
+    <div class="val">
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" name="birthDate" #txtDate="ngModel" required [(ngModel)]="userModel.birthDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="clear">
+  </div>
+  
+  <div>
+    <input type="submit" class="btnBlue" value="Save" [disabled]="!userModelForm.form.valid">
+  </div>
+</form>
+<div>
+  <input type="button" class="btnBlue" value="Show All Users" (click)="move2users();" >
+</div>
+<!-- <pre>{{ getCurrentModel() }}</pre> -->

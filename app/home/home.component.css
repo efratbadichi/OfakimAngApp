@@ -1,0 +1,32 @@
+
+.clear{
+  clear: both;
+}
+.alert{
+  color: red;
+  font-size: 12px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.regForm .lbl{
+  width: 180px;
+  float: left;
+}
+.regForm > div{
+  margin-bottom: 10px;
+}
+.regForm .val > input ,.regForm .val > select{
+  width: 180px;
+  line-height: 25px;
+  height: 25px;
+}
+.regForm .val > .mat-form-field{
+  width: 180px;
+}
+
+.regForm .val .mat-form-field-infix{
+  padding-top: 0px;
+}
+
+
